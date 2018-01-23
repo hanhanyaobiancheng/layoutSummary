@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .warp {
+    }
+    /* TODO 元素清除浮动， 子元素浮动后，父元素高度塌陷的问题*/
+    .warp:after{
+        content:"";
+        height:0;
+        visibility:hidden;
+        display:block;
+        clear:both;
+    }
+    .left {
+        float: left;
+        width: 30%;
+        background: #bcbcbc;
+    }
+    .right{
+        float: left;
+        width: 70%;
+        background: #9fd2f6;
+    }
+    @media (max-width: 800px) {
+        .right{
+            width: 100%;
+        }
+        .left{
+            width: 100%;
+        }
+    }
+</style>
+<body>
+    <div class="warp">
+        <div class="left">
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+            <p>123123123</p>
+        </div>
+        <div class="right">
+            <p>123123123</p>
+        </div>
+    </div>
+</body>
+<script>
+    var wrapDom = document.querySelector('.warp');
+    var leftDom = document.querySelector('.left');
+    var rightDom = document.querySelector('.right');
+    leftDom.style.height = `${wrapDom.clientHeight}px`;
+    rightDom.style.height = `${wrapDom.clientHeight}px`;
+</script>
+</html>
